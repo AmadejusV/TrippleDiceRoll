@@ -1,0 +1,25 @@
+Random dice = new Random();
+List<int> numbers = new List<int>();
+int result=0;
+int j;
+string answer;
+
+for(int i=0; i<3;i++){
+numbers.Add(dice.Next(1,7));
+result+=numbers[i];
+}
+
+for(int d=0; d<numbers.Count;d++)
+{   
+    for(j=d+1;j<numbers.Count;j++){
+        if(numbers[j]==numbers[d]){
+        result+=2;
+        }
+    }
+}
+if(result>=15){
+    answer="\nCongradulations you won!";
+}else{
+    answer="\nSorry, you lost, better luck next time...";
+}
+Console.WriteLine($"The rolls are {numbers[0]}, {numbers[1]} and {numbers[2]}. And the score is {result}. {answer}");
